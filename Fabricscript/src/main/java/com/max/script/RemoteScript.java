@@ -7,7 +7,8 @@ import org.slf4j.LoggerFactory;
 
 public class RemoteScript implements IRemoteModule, ModInitializer {
     
-    // Diese EINE Methode erfüllt BEIDE Interfaces gleichzeitig!
+    // NUR EINMAL SCHREIBEN! 
+    // Diese eine Methode erfüllt die Anforderungen von Fabric UND deinem Interface gleichzeitig.
     @Override
     public void onInitialize() {
         runMyCode();
