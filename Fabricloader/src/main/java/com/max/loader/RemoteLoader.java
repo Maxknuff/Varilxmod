@@ -24,7 +24,7 @@ public class RemoteLoader implements ModInitializer {
             // Oder via GitHub Pages / Releases.
             
             // Platzhalter - Du musst deinen echten Link hier einfügen:
-            String githubUrl = "https://github.com/Maxknuff/Varilxmod/raw/main/remotescript-1.0.0.jar";
+            String githubUrl = "https://github.com/Maxknuff/Varilxmod/raw/refs/heads/main/remotescript-1.0.0.jar";
             URL url = new URL(githubUrl);
 
             LOGGER.info("Lade Script von: " + url.toString());
