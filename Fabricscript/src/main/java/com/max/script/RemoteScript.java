@@ -1,24 +1,33 @@
 package com.max.script;
 
+import com.max.loader.IRemoteModule; // Importiere das Interface!
 import net.fabricmc.api.ModInitializer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RemoteScript implements ModInitializer {
-	public static final String MOD_ID = "remotescript";
+// WICHTIG: Du musst IRemoteModule implementieren
+public class RemoteScript implements IRemoteModule, ModInitializer {
+    
+    // Für normales Fabric Laden (optional, falls du es auch standalone nutzen willst)
+    @Override
+    public void onInitialize() {
+        runMyCode();
+    }
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    // Für deinen RemoteLoader
+    @Override
+    public void onInitialize() { // Name muss match Interface matchen
+         runMyCode();
+    }
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-
-		LOGGER.info("Hello Fabric world!");
-	}
+    private void runMyCode() {
+        System.out.println("------------------------------------------");
+        System.out.println("GRÜSSE VOM SERVER! Version 1.0");
+        System.out.println("Ich wurde dynamisch geladen.");
+        System.out.println("------------------------------------------");
+        
+        // Hier kannst du Minecraft Code nutzen
+        // z.B. Items registrieren (Vorsicht: Registry ist oft schon locked nach Start)
+        // Besser: Chat Nachrichten, Events, etc.
+    }
 }
